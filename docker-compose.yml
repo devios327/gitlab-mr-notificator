@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  gitlab-telegram-bot:
+    build: . # Указывает Docker Compose собрать образ из текущей директории
+    command: python main.py
+    env_file:
+      - .env # Указывает Docker Compose использовать переменные из этого файла
+    restart: always # Автоматически перезапускать контейнер в случае сбоя
