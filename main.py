@@ -4,7 +4,10 @@ import time
 import requests
 import asyncio
 import telegram
+from dotenv import load_dotenv
 
+# Загружаем переменные окружения из файла .env
+load_dotenv()
 print("gogogo")
 
 # Настройки GitLab, загружаемые из переменных окружения
@@ -15,7 +18,8 @@ GITLAB_PRIVATE_TOKEN = os.getenv('GITLAB_PRIVATE_TOKEN')
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
-print(GITLAB_URL)
+print(f"GitLab URL: {GITLAB_URL}")
+print(f"GitLab Private Token: {GITLAB_PRIVATE_TOKEN}")
 
 # Переменная для отслеживания отправки сообщения
 last_notified_mrs = set()
