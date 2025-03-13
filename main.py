@@ -47,6 +47,9 @@ def send_telegram_message(message):
     # Создаем экземпляр бота и отправляем сообщение в указанный чат
     bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
     asyncio.run(bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=message))
+    #loop = asyncio.get_event_loop()
+    #loop.run_until_complete(bot.send_message(chat_id=TELEGRAM_CHAT_ID, text=message))
+    #loop.close()
 
 def job():
     global last_notified_mrs
@@ -70,6 +73,7 @@ def job():
 schedule.every(1).minute.do(job)
 
 if __name__ == "__main__":
+    send_telegram_message("gitlab-mr-notificator init")
     while True:
         schedule.run_pending()
         time.sleep(1)
